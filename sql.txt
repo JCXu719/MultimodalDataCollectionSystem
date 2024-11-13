@@ -1,0 +1,55 @@
+create table picture
+(
+    id          int auto_increment
+        primary key,
+    name        varchar(50)  not null,
+    type        varchar(10)  not null,
+    size        mediumtext   not null,
+    url         varchar(200) not null,
+    upload_time timestamp    null,
+    username    varchar(20)  not null
+);
+
+create table score
+(
+    id          int auto_increment
+        primary key,
+    scale_id    int          not null,
+    scale_url   varchar(200) not null,
+    username    varchar(20)  not null,
+    scores      varchar(200) not null,
+    upload_time timestamp    not null
+);
+
+create table user
+(
+    username        varchar(20)  not null,
+    student_id      varchar(10)  not null,
+    password        varchar(30)  not null,
+    id              int auto_increment
+        primary key,
+    class_code      varchar(20)  not null,
+    role            int          not null,
+    avatar_url      varchar(50)  not null,
+    qq              varchar(15)  not null,
+    gender          int          not null,
+    education_level int          not null,
+    birth_date      varchar(20)  not null,
+    phone           varchar(20)  not null,
+    fullname        varchar(10)  not null,
+    hobbies         varchar(100) not null,
+    career          varchar(20)  null
+);
+
+create table video_files
+(
+    id          int auto_increment
+        primary key,
+    name        varchar(30)  not null,
+    type        varchar(20)  null,
+    size        mediumtext   not null,
+    url         varchar(200) null,
+    upload_time timestamp    null,
+    username    varchar(20)  not null
+);
+

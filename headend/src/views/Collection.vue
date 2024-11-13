@@ -74,7 +74,7 @@
               "
               @finish="
                 (value) => {
-                  updateState(26, value)
+                  updateState(27, value)
                 }
               "
             ></Signature>
@@ -690,6 +690,16 @@
                 }
               "
             >
+              <template v-slot>
+                <base-button
+                  type="info"
+                  id="retry"
+                  @click="entryCreate()"
+                  style="display: none"
+                >
+                  重试
+                </base-button>
+              </template>
             </Scale>
           </card>
         </div>
@@ -856,7 +866,7 @@ export default {
           //   alert(Object.isFrozen(obj))
           await this.entryCreate()
         }
-      } else if (state === 26) {
+      } else if (state === 27) {
         this.formData_sign.append('signature', value)
       }
     },
@@ -993,6 +1003,7 @@ export default {
               this.message = this.messages.messageScaleError
             }
           })
+
         //再上传量表
         await axios
           .post('/score/upload', this.formData_answer, {
@@ -1022,6 +1033,8 @@ export default {
       } catch (e) {
         this.showModal = true
         this.message = this.messages.messageScaleError
+        document.querySelector('#retry').style.display = 'block'
+        document.querySelector('#retry').style.marginLeft = '250px'
       }
     },
     nextstep() {

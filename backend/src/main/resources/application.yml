@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: test
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:projectinfo}
+#    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:video_db}
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:Jc230032}
+
+  servlet:
+    multipart:
+      max-file-size: 5000MB
+      max-request-size: 6000MB
+
+
+server:
+  port: 8080
+  address: 0.0.0.0
+
+app:
+  file:  #图片、视频资源文件
+    upload:
+      path: ${RES_PATH:G:/work/javaWeb/projects/test/resources}
+
+  users:
+    avatar-path: ${AVATAR_PATH:G:/work/javaWeb/projects/test/avatar} #用户头像位置
+    data: ${DATA_PATH:G:/work/javaWeb/projects/test/data} #采集数据的位置
+
+

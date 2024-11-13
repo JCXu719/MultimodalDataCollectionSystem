@@ -3,7 +3,7 @@
     <h1 class="text-center mt-3 mb-3">BFI-2 量表</h1>
     <div
       id="zero"
-      style="display: none; padding-left: 170px; padding-top: 40px"
+      style="display: none; padding-left: 160px; padding-top: 40px"
     >
       <h3>数据提交中，请等待。</h3>
     </div>
@@ -20,7 +20,7 @@
         display: none;
         padding-top: 80px;
         padding-bottom: 40px;
-        padding-left: 160px;
+        padding-left: 133px;
       "
     >
       <p>【预计需要1-3分钟左右,请勿点击任何按钮】</p>
@@ -51,6 +51,7 @@
         </div>
         <div class="text-center mt-3 mb-3">
           <base-button
+            v-if="currentPage != totalPages - 1"
             id="laststep"
             type="secondary"
             @click="prevPage"
@@ -59,6 +60,7 @@
             上一步
           </base-button>
           <base-button
+            v-if="currentPage != totalPages - 1"
             type="primary"
             @click="nextPage"
             :disabled="currentPage >= totalPages - 2"
@@ -72,6 +74,13 @@
           >
             提交
           </base-button>
+          <!-- <base-button
+            v-if="currentPage === totalPages - 1"
+            type="info"
+            native-type="submit"
+          >
+          </base-button> -->
+          <slot v-if="currentPage === totalPages - 1"></slot>
         </div>
       </div>
     </form>
