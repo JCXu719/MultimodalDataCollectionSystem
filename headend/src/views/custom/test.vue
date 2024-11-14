@@ -79,6 +79,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name: 'Test',
     //定义的变量
@@ -98,6 +99,7 @@ export default {
             Mic: [], // 可选择的麦克风
             times_audio: 0,
             times_video: 0,
+            formData_video: new FormData()
         }
     },
     mounted() {
@@ -219,9 +221,41 @@ export default {
                     this.mediaRecorder0.addEventListener('stop', () => {
                         stream.getTracks().forEach((track) => track.stop())
                         this.videoBlob = new Blob(videoChunks, { type: '"video/mp4"' })
+                        const file = new File([this.videoBlob], 'recording.mp4', { type: 'video/mp4' })
+                        // 将文件添加到formData_video中
+                        this.formData_video.append('video', file)
+
+                        alert("已经添加到formData_video中")
                         this.videorecording = false
                         this.videorecorded = true
+
+                        // 上传视频到后端
+                        try {
+                            axios
+                                .post('/video/upload/test', this.formData_video, {
+                                    headers: {
+                                        'Content-Type': 'multipart/form-data',
+                                        token: this.$store.state.accessToken,
+                                    },
+                                })
+                                .then((response) => {
+                                    const { code, data } = response.data
+                                    console.log('code' + code)
+                                    if (code === 1) {
+                                        this.showModal = true
+                                        this.message = this.messages.messageScaleFinish
+                                    } else {
+                                        this.showModal = true
+                                        this.message = this.messages.messageScaleError
+                                    }
+                                })
+                        } catch (e) {
+                            alert(e)
+                            alert("测试视频上传失败，请检查与服务器的连接")
+                        }
                     })
+
+
                 })
                 .catch((error) => {
                     console.error('获取视频流失败：', error)
@@ -229,9 +263,12 @@ export default {
         },
         //停止视频
         videoStopRecording() {
+
             document.querySelector('#videoplay').disabled = false
             this.mediaRecorder0.stop()
             console.log(this.mediaRecorder, '停止录制')
+
+
         },
         //播放视频
         videoPlayRecording() {
