@@ -117,17 +117,17 @@
               <template v-slot:title>
                 <h1 class="text-center mt-3 mb-3">步骤二 回答问题</h1>
               </template>
-              <template v-slot:content>
-                <p>
+              <template v-slot:content >
+                <p style="font-weight: 900;">
                   我们将会依次询问您5个问题。在每个问题陈述完毕后，您将有30秒的时间进行思考。
                 </p>
-                <p>
+                <p style="font-weight: 900;">
                   思考时间结束后，你将有3分钟的时间回答，时间会显示在屏幕上。你也可以点击结束按钮提前结束思考和回答时间。
                 </p>
-                <p>
+                <p style="font-weight: 900;">
                   每个问题的答案无对错之分，不带有任何评价意义，你可以自由表达。希望您表达的尽可能详细且真实。
                 </p>
-                <p>请问你准备好了吗？</p>
+                <p style="font-weight: 900;" >请问你准备好了吗？</p>
               </template>
               <template v-slot:end> 准备好了 </template>
             </Announcement>
@@ -144,10 +144,10 @@
                 <h1 class="text-center mt-3 mb-3">问题一</h1>
               </template>
               <template v-slot:content>
-                <p>
+                <p style="font-weight: 900;">
                   你能告诉我，在过去的生活中，你最美好的记忆或经历过的最美好的事情吗？为什么？
                 </p>
-                <p>现在你有30秒的时间可以思考。</p>
+                <p style="font-weight: 900;">现在你有30秒的时间可以思考。</p>
               </template>
               <template v-slot:end> 结束思考 </template>
             </Announcement>
@@ -164,10 +164,10 @@
                 <h1 class="text-center mt-3 mb-3">问题一</h1>
               </template>
               <template v-slot:content>
-                <p>
+                <p style="font-weight: 900;">
                   你能告诉我，在过去的生活中，你最美好的记忆或经历过的最美好的事情吗？为什么？
                 </p>
-                <p>现在你有60秒的时间可以回答。</p>
+                <p style="font-weight: 900;">现在你有60秒的时间可以回答。</p>
               </template>
               <template v-slot:end> 结束回答 </template>
             </Announcement>
@@ -184,10 +184,10 @@
                 <h1 class="text-center mt-3 mb-3">问题二</h1>
               </template>
               <template v-slot:content>
-                <p>
+                <p style="font-weight: 900;">
                   你能告诉我，在过去的生活中，你有过什么不愉快或悲伤的记忆吗？为什么？
                 </p>
-                <p>现在你有30秒的时间可以思考。</p>
+                <p style="font-weight: 900;">现在你有30秒的时间可以思考。</p>
               </template>
               <template v-slot:end> 结束思考 </template>
             </Announcement>
@@ -204,10 +204,10 @@
                 <h1 class="text-center mt-3 mb-3">问题二</h1>
               </template>
               <template v-slot:content>
-                <p>
+                <p style="font-weight: 900;">
                   你能告诉我，在过去的生活中，你有过什么不愉快或悲伤的记忆吗？为什么？
                 </p>
-                <p>现在你有60秒的时间可以回答。</p>
+                <p style="font-weight: 900;">现在你有60秒的时间可以回答。</p>
               </template>
               <template v-slot:end> 结束回答 </template>
             </Announcement>
@@ -224,8 +224,8 @@
                 <h1 class="text-center mt-3 mb-3">问题三</h1>
               </template>
               <template v-slot:content>
-                <p>你最近过得怎么样？发生了什么，你的心情怎么样？</p>
-                <p>现在你有30秒的时间可以思考。</p>
+                <p style="font-weight: 900;">你最近过得怎么样？发生了什么，你的心情怎么样？</p>
+                <p style="font-weight: 900;">现在你有30秒的时间可以思考。</p>
               </template>
               <template v-slot:end> 结束思考 </template>
             </Announcement>
@@ -242,8 +242,8 @@
                 <h1 class="text-center mt-3 mb-3">问题三</h1>
               </template>
               <template v-slot:content>
-                <p>你最近过得怎么样？发生了什么，你的心情怎么样？</p>
-                <p>现在你有60秒的时间可以回答。</p>
+                <p style="font-weight: 900;">你最近过得怎么样？发生了什么，你的心情怎么样？</p>
+                <p style="font-weight: 900;">现在你有60秒的时间可以回答。</p>
               </template>
               <template v-slot:end> 结束回答 </template>
             </Announcement>
@@ -260,8 +260,8 @@
                 <h1 class="text-center mt-3 mb-3">问题四</h1>
               </template>
               <template v-slot:content>
-                <p>你对现在正在做的这件事感觉如何？</p>
-                <p>现在你有30秒的时间可以思考。</p>
+                <p style="font-weight: 900;">你对现在正在做的这件事感觉如何？</p>
+                <p style="font-weight: 900;">现在你有30秒的时间可以思考。</p>
               </template>
               <template v-slot:end> 结束思考 </template>
             </Announcement>
@@ -278,8 +278,8 @@
                 <h1 class="text-center mt-3 mb-3">问题四</h1>
               </template>
               <template v-slot:content>
-                <p>你对现在正在做的这件事感觉如何？</p>
-                <p>现在你有60秒的时间可以回答。</p>
+                <p style="font-weight: 900;">你对现在正在做的这件事感觉如何？</p>
+                <p style="font-weight: 900;">现在你有60秒的时间可以回答。</p>
               </template>
               <template v-slot:end> 结束回答 </template>
             </Announcement>
@@ -296,8 +296,8 @@
                 <h1 class="text-center mt-3 mb-3">问题五</h1>
               </template>
               <template v-slot:content>
-                <p>你的生活中有什么你想改变的吗？</p>
-                <p>现在你有30秒的时间可以思考。</p>
+                <p style="font-weight: 900;">你的生活中有什么你想改变的吗？</p>
+                <p style="font-weight: 900;">现在你有30秒的时间可以思考。</p>
               </template>
               <template v-slot:end> 结束思考 </template>
             </Announcement>
@@ -314,8 +314,8 @@
                 <h1 class="text-center mt-3 mb-3">问题五</h1>
               </template>
               <template v-slot:content>
-                <p>你的生活中有什么你想改变的吗？</p>
-                <p>现在你有60秒的时间可以回答。</p>
+                <p style="font-weight: 900;">你的生活中有什么你想改变的吗？</p>
+                <p style="font-weight: 900;">现在你有60秒的时间可以回答。</p>
               </template>
               <template v-slot:end> 结束回答 </template>
             </Announcement>
@@ -332,11 +332,11 @@
                 <h1 class="text-center mt-3 mb-3">步骤三 墨迹测试</h1>
               </template>
               <template v-slot:content>
-                <p>
+                <p style="font-weight: 900;">
                   根据给出的墨迹图像，描述所看见的东西，说出您看到了什么，包括颜色、形状和可能的情感或故事，让您联想到某个特定的物体、事件或感觉。
                 </p>
-                <p>思考时间60s，回答时间180s。</p>
-                <p>例如</p>
+                <p style="font-weight: 900;">思考时间60s，回答时间180s。</p>
+                <p style="font-weight: 900;">例如</p>
                 <div class="text-center mt-3 mb-3">
                   <img
                     src="img/exm/rorschach0.png"
@@ -345,22 +345,22 @@
                     width="80%"
                   />
                 </div>
-                <p>
+                <p style="font-weight: 900;">
                   这张图中我觉得中间的部分像是一张面具，有点像是戏剧中的面具。
                 </p>
-                <p>
+                <p style="font-weight: 900;">
                   它的上方有类似于眼睛的图形，中间有一个倒三角形状的鼻子，以及上翘的形状似乎在暗示一个微笑。
                 </p>
-                <p>
+                <p style="font-weight: 900;">
                   周围的图形让我联想到了动物的翅膀，特别像是夜晚飞翔的蝙蝠，因为它们有一种流畅而又对称的外形。
                 </p>
-                <p>
+                <p style="font-weight: 900;">
                   墨迹的边缘有些地方像是羽毛或者毛发般细腻，增加了一种自然的质感。
                 </p>
-                <p>
+                <p style="font-weight: 900;">
                   而墨迹图的整体布局对称，让我感觉图中的形象在平衡中寻找着秩序。
                 </p>
-                <p>总的来说，这张图给我的感觉是既神秘又有生命力的。</p>
+                <p style="font-weight: 900;">总的来说，这张图给我的感觉是既神秘又有生命力的。</p>
               </template>
               <template v-slot:end> 开始测试 </template>
             </Announcement>
@@ -377,7 +377,7 @@
                 <h1 class="text-center mt-3 mb-3">墨迹测试一</h1>
               </template>
               <template v-slot:content>
-                <p>
+                <p style="font-weight: 900;">
                   根据给出的墨迹图像，描述所看见的东西，说出您看到了什么，包括颜色、形状和可能的情感或故事，让您联想到某个特定的物体、事件或感觉。
                 </p>
                 <div class="text-center mt-3 mb-3">
@@ -388,7 +388,7 @@
                     width="80%"
                   />
                 </div>
-                <p>现在你有60秒的时间可以思考。</p>
+                <p style="font-weight: 900;">现在你有60秒的时间可以思考。</p>
               </template>
               <template v-slot:end> 结束思考 </template>
             </Announcement>
@@ -405,7 +405,7 @@
                 <h1 class="text-center mt-3 mb-3">墨迹测试一</h1>
               </template>
               <template v-slot:content>
-                <p>
+                <p style="font-weight: 900;">
                   根据给出的墨迹图像，描述所看见的东西，说出您看到了什么，包括颜色、形状和可能的情感或故事，让您联想到某个特定的物体、事件或感觉。
                 </p>
                 <div class="text-center mt-3 mb-3">
@@ -416,7 +416,7 @@
                     width="80%"
                   />
                 </div>
-                <p>现在你有180秒的时间可以回答。</p>
+                <p style="font-weight: 900;">现在你有180秒的时间可以回答。</p>
               </template>
               <template v-slot:end> 结束回答 </template>
             </Announcement>
@@ -433,7 +433,7 @@
                 <h1 class="text-center mt-3 mb-3">墨迹测试二</h1>
               </template>
               <template v-slot:content>
-                <p>
+                <p style="font-weight: 900;">
                   根据给出的墨迹图像，描述所看见的东西，说出您看到了什么，包括颜色、形状和可能的情感或故事，让您联想到某个特定的物体、事件或感觉。
                 </p>
                 <div class="text-center mt-3 mb-3">
@@ -444,7 +444,7 @@
                     width="80%"
                   />
                 </div>
-                <p>现在你有60秒的时间可以思考。</p>
+                <p style="font-weight: 900;">现在你有60秒的时间可以思考。</p>
               </template>
               <template v-slot:end> 结束思考 </template>
             </Announcement>
@@ -461,7 +461,7 @@
                 <h1 class="text-center mt-3 mb-3">墨迹测试二</h1>
               </template>
               <template v-slot:content>
-                <p>
+                <p style="font-weight: 900;">
                   根据给出的墨迹图像，描述所看见的东西，说出您看到了什么，包括颜色、形状和可能的情感或故事，让您联想到某个特定的物体、事件或感觉。
                 </p>
                 <div class="text-center mt-3 mb-3">
@@ -472,7 +472,7 @@
                     width="80%"
                   />
                 </div>
-                <p>现在你有180秒的时间可以回答。</p>
+                <p style="font-weight: 900;">现在你有180秒的时间可以回答。</p>
               </template>
               <template v-slot:end> 结束回答 </template>
             </Announcement>
@@ -489,7 +489,7 @@
                 <h1 class="text-center mt-3 mb-3">墨迹测试三</h1>
               </template>
               <template v-slot:content>
-                <p>
+                <p style="font-weight: 900;">
                   根据给出的墨迹图像，描述所看见的东西，说出您看到了什么，包括颜色、形状和可能的情感或故事，让您联想到某个特定的物体、事件或感觉。
                 </p>
                 <div class="text-center mt-3 mb-3">
@@ -500,7 +500,7 @@
                     width="80%"
                   />
                 </div>
-                <p>现在你有60秒的时间可以思考。</p>
+                <p style="font-weight: 900;">现在你有60秒的时间可以思考。</p>
               </template>
               <template v-slot:end> 结束思考 </template>
             </Announcement>
@@ -517,7 +517,7 @@
                 <h1 class="text-center mt-3 mb-3">墨迹测试三</h1>
               </template>
               <template v-slot:content>
-                <p>
+                <p style="font-weight: 900;">
                   根据给出的墨迹图像，描述所看见的东西，说出您看到了什么，包括颜色、形状和可能的情感或故事，让您联想到某个特定的物体、事件或感觉。
                 </p>
                 <div class="text-center mt-3 mb-3">
@@ -528,7 +528,7 @@
                     width="80%"
                   />
                 </div>
-                <p>现在你有180秒的时间可以回答。</p>
+                <p style="font-weight: 900;">现在你有180秒的时间可以回答。</p>
               </template>
               <template v-slot:end> 结束回答 </template>
             </Announcement>
@@ -545,7 +545,7 @@
                 <h1 class="text-center mt-3 mb-3">墨迹测试四</h1>
               </template>
               <template v-slot:content>
-                <p>
+                <p style="font-weight: 900;">
                   根据给出的墨迹图像，描述所看见的东西，说出您看到了什么，包括颜色、形状和可能的情感或故事，让您联想到某个特定的物体、事件或感觉。
                 </p>
                 <div class="text-center mt-3 mb-3">
@@ -556,7 +556,7 @@
                     width="80%"
                   />
                 </div>
-                <p>现在你有60秒的时间可以思考。</p>
+                <p style="font-weight: 900;">现在你有60秒的时间可以思考。</p>
               </template>
               <template v-slot:end> 结束思考 </template>
             </Announcement>
@@ -573,7 +573,7 @@
                 <h1 class="text-center mt-3 mb-3">墨迹测试四</h1>
               </template>
               <template v-slot:content>
-                <p>
+                <p style="font-weight: 900;" >
                   根据给出的墨迹图像，描述所看见的东西，说出您看到了什么，包括颜色、形状和可能的情感或故事，让您联想到某个特定的物体、事件或感觉。
                 </p>
                 <div class="text-center mt-3 mb-3">
@@ -584,7 +584,7 @@
                     width="80%"
                   />
                 </div>
-                <p>现在你有180秒的时间可以回答。</p>
+                <p style="font-weight: 900;">现在你有180秒的时间可以回答。</p>
               </template>
               <template v-slot:end> 结束回答 </template>
             </Announcement>
@@ -601,7 +601,7 @@
                 <h1 class="text-center mt-3 mb-3">墨迹测试五</h1>
               </template>
               <template v-slot:content>
-                <p>
+                <p style="font-weight: 900;">
                   根据给出的墨迹图像，描述所看见的东西，说出您看到了什么，包括颜色、形状和可能的情感或故事，让您联想到某个特定的物体、事件或感觉。
                 </p>
                 <div class="text-center mt-3 mb-3">
@@ -612,7 +612,7 @@
                     width="80%"
                   />
                 </div>
-                <p>现在你有60秒的时间可以思考。</p>
+                <p style="font-weight: 900;">现在你有60秒的时间可以思考。</p>
               </template>
               <template v-slot:end> 结束思考 </template>
             </Announcement>
@@ -629,7 +629,7 @@
                 <h1 class="text-center mt-3 mb-3">墨迹测试五</h1>
               </template>
               <template v-slot:content>
-                <p>
+                <p style="font-weight: 900;">
                   根据给出的墨迹图像，描述所看见的东西，说出您看到了什么，包括颜色、形状和可能的情感或故事，让您联想到某个特定的物体、事件或感觉。
                 </p>
                 <div class="text-center mt-3 mb-3">
@@ -640,7 +640,7 @@
                     width="80%"
                   />
                 </div>
-                <p>现在你有180秒的时间可以回答。</p>
+                <p style="font-weight: 900;">现在你有180秒的时间可以回答。</p>
               </template>
               <template v-slot:end> 结束回答 </template>
             </Announcement>
@@ -657,17 +657,17 @@
                 <h1 class="text-center mt-3 mb-3">步骤四 填写量表</h1>
               </template>
               <template v-slot:content>
-                <p>
+                <p style="font-weight: 900;">
                   恭喜你！你已经完成了视听数据采集的基本工作，只剩下最后一步，填写一份量表的任务就完成了！
                 </p>
-                <p>
+                <p style="font-weight: 900;">
                   现在你需要填写一份人格问卷，它一共有60个问题，完成时间在 10
                   分钟以内。
                 </p>
-                <p>
+                <p style="font-weight: 900;">
                   希望你能够认真作答。填写结束之后会显示你在每个人格维度上的分数，这有助于你加深对自己的了解。
                 </p>
-                <p>如果你准备好了，点击下面的按钮，我们就可以开始了。</p>
+                <p style="font-weight: 900;">如果你准备好了，点击下面的按钮，我们就可以开始了。</p>
               </template>
               <template v-slot:end> 准备好了 </template>
             </Announcement>

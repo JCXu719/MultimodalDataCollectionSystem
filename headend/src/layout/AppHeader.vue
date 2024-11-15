@@ -1,7 +1,6 @@
 <template>
   <header class="header-global">
     <base-nav class="navbar-main" transparent type="" effect="light" expand>
-      <router-link class="navbar-brand mr-lg-5" to="/">
         <span
           class="navbar-brand mr-lg-5"
           style="
@@ -14,7 +13,6 @@
           "
           >多模态数据采集系统</span
         >
-      </router-link>
 
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
         <template v-if="isAuthenticated()">

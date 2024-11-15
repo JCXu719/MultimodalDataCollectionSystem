@@ -204,32 +204,37 @@ export default {
                             {
                                 headers: {
                                     'Content-Type': 'application/json',
-                                    'token': this.$store.state.accessToken,
                                 },
                             }
                         )
                         .then((response) => {
                             const { code, data } = response.data
+                            console.log(data)
                             if (code === 1) {
                                 if (data >= 100) {
                                     this.showModal = true
                                     this.message = '注册人数已满'
+                                    return
                                 }else{
                                     console.log("未满")
+                                    this.attemptRegistration();
                                 }
                             } else {
                                 this.showModal = true
                                 this.message = '注册失败，无法读取注册人数'
+                                return
                             }
                         })
                 } catch (e) {
                     this.showModal = true
                     this.message = "注册失败，未连接到服务器或服务器未启动"
-                }
-
-                // 未达到上限，正常采集
-                try {
-                    await axios
+                    return
+                }   
+            }
+        },
+        attemptRegistration(){
+            try {
+                    axios
                         .post(
                             '/user/register',
                             {
@@ -271,7 +276,6 @@ export default {
                     this.showModal = true
                     this.message = "注册失败，未连接到服务器或服务器未启动"
                 }
-            }
         },
         showAll() {
             if (!this.textOpenFlag) {

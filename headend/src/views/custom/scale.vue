@@ -5,13 +5,13 @@
       id="zero"
       style="display: none; padding-left: 160px; padding-top: 40px"
     >
-      <h3>数据提交中，请等待。</h3>
+      <h3 style="font-weight: 900;">数据提交中，请等待。</h3>
     </div>
-    <p id="one">
+    <p id="one" style="font-weight: 900;">
       下面是一些关于个人特征的描述，有些可能适用于你，有些可能不适用于你。
     </p>
-    <p id="two">比如，你是否同意“我是一个喜欢与他人待在一起的人”?</p>
-    <p id="three">
+    <p id="two" style="font-weight: 900;">比如，你是否同意“我是一个喜欢与他人待在一起的人”?</p>
+    <p id="three" style="font-weight: 900;">
       用 1 至 5 描述你对于这些特征的认同程度，1 表示非常不认同，5 表示非常认同。
     </p>
     <div
@@ -21,9 +21,10 @@
         padding-top: 80px;
         padding-bottom: 40px;
         padding-left: 133px;
+        font-weight: 900;
       "
     >
-      <p>【预计需要1-3分钟左右,请勿点击任何按钮】</p>
+      <p style="font-weight: 900;">【预计需要1-3分钟左右,请勿点击任何按钮】</p>
     </div>
     <form @submit.prevent="submitForm" class="text-center">
       <div id="all">

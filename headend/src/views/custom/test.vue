@@ -1,15 +1,16 @@
 <template>
     <section class="section section-shaped section-lg my-0 text-center">
         <div>
-            <h1 style="margin-bottom: 50px">媒体设备检测</h1>
+            <h1 style="margin-bottom: 50px; font-weight: 900;">媒体设备检测</h1>
             <div>
-                <h3>音频检测</h3>
+                <h3 style="font-weight: 900;">音频检测</h3>
                 <div style="
             margin-top: 20px;
-            margin-left: 90px;
+            margin-left:65px;
             text-align: left;
-            font-weight: 500;
+            font-weight: 900;
           ">
+                    在下方的选择框内选择录音使用的设备<br>
                     (1)点击左侧【开始录制】按钮，任意录制一段音频；<br />
                     (2)点击右侧【音频回放】按钮，检测是否可听到自己录制的音频。
                 </div>
@@ -38,14 +39,15 @@
             </div>
             <hr />
             <div>
-                <h3 style="margin-top: 50px">视频检测</h3>
+                <h3 style="margin-top: 50px; font-weight: 900;">视频检测</h3>
                 <div style="
             margin-top: 20px;
-            margin-left: 90px;
+            margin-left: 30px;
             text-align: left;
-            font-weight: 500;
+            font-weight: 900;
           ">
-                    (1)点击左侧【开始录制】按钮，任意录制一段视频；<br />
+                    录制一段视频，检查视频分辨率及帧率是否符合要求（不符合要求请更换设备），并调整自身坐姿<br>
+                    (1)点击左侧【开始录制】按钮，任意录制一段视频（限定10秒）；<br />
                     (2)点击右侧【视频回放】按钮，检测是否可看到自己录制的视频。
                 </div>
                 <div style="margin-top: 40px; margin-left: 20px">
@@ -60,7 +62,7 @@
                         style="margin-top: 50px; margin-left: 30px" class="text-center mt-3 mb-3" ref="video"
                         width="80%" autoplay muted></video>
                     <img src="img/people.png" alt="人像" class="img-fluid rounded shadow" width="55%"
-                        style="position: absolute; left: 145px; top: 765px" />
+                        style="position: absolute; left: 145px; top: 820px" />
                 </div>
 
                 <div id="videoInfo" style="
@@ -99,7 +101,9 @@ export default {
             Mic: [], // 可选择的麦克风
             times_audio: 0,
             times_video: 0,
-            formData_video: new FormData()
+            formData_video: new FormData(),
+            isVideoSatisified: false,
+            fps: null
         }
     },
     mounted() {
@@ -144,7 +148,7 @@ export default {
             console.log(audio)
             audio.play()
             this.times_audio += 1
-            if (this.times_audio && this.times_video) {
+            if (this.times_audio && this.times_video && this.isVideoSatisified) {
                 this.times_audio = 0
                 this.times_video = 0
                 const nextstep = document.querySelector('#nextstep')
@@ -224,12 +228,33 @@ export default {
                         const file = new File([this.videoBlob], 'recording.mp4', { type: 'video/mp4' })
                         // 将文件添加到formData_video中
                         this.formData_video.append('video', file)
-
-                        alert("已经添加到formData_video中")
                         this.videorecording = false
                         this.videorecorded = true
+                        
 
-                        // 上传视频到后端
+                        //---------------------------------------//
+                        //----------临时测试下载文件到本地---------//
+                        const url = URL.createObjectURL(this.videoBlob)
+                        const a = document.createElement('a')
+                        document.body.appendChild(a)
+                        a.style.display = 'none'
+                        a.href = url
+
+                        // 设置下载文件名
+                        if (this.fileName) {
+                            a.download = this.fileName + '.mp4'
+                        } else {
+                            a.download = 'localVideo.mp4'
+                        }
+                        // 下载文件
+                        a.click()
+                        // 释放内存
+                        window.URL.revokeObjectURL(url)
+
+                        this.formData_video.append('video', file)
+
+                        //---------------------------------------//
+                        //------------上传测试视频到后端-----------//
                         try {
                             axios
                                 .post('/video/upload/test', this.formData_video, {
@@ -240,22 +265,22 @@ export default {
                                 })
                                 .then((response) => {
                                     const { code, data } = response.data
-                                    console.log('code' + code)
-                                    if (code === 1) {
-                                        this.showModal = true
-                                        this.message = this.messages.messageScaleFinish
+                                    this.fps = data.frameRate
+
+                                    // 判断帧率是否符合要求
+                                    if (this.fps >= 25) {
+                                        this.isVideoSatisified = true
                                     } else {
-                                        this.showModal = true
-                                        this.message = this.messages.messageScaleError
+                                        this.isVideoSatisified = false
+                                        alert("录制的视频帧率无法满足要求，请更换设备试试噢")
                                     }
+
                                 })
                         } catch (e) {
                             alert(e)
                             alert("测试视频上传失败，请检查与服务器的连接")
                         }
                     })
-
-
                 })
                 .catch((error) => {
                     console.error('获取视频流失败：', error)
@@ -286,17 +311,17 @@ export default {
             this.getVideoData().then((videoInfo) => {
                 console.log('videoInfo对象：', videoInfo)
                 document.querySelector('#videoInfo').innerHTML =
-                    'VideoInfo:<br>' +
-                    'resolution:' +
+                    '视频信息如下:<br>' +
+                    '分辨率:' +
                     videoInfo.height +
                     '*' +
                     videoInfo.width +
                     '<br>' +
-                    'duration:' +
-                    '3s'
+                    '持续时间:' +
+                    '10s' + '<br>' + 'fps:' + this.fps
             })
             this.times_video += 1
-            if (this.times_audio && this.times_video) {
+            if (this.times_audio && this.times_video && this.isVideoSatisified) {
                 this.times_audio = 0
                 this.times_video = 0
                 const nextstep = document.querySelector('#nextstep')
@@ -317,7 +342,7 @@ export default {
                     this.videoStopRecording()
                     document.querySelector('#button0').style.backgroundColor = '#11CDEF'
                     document.querySelector('#button0').disabled = false
-                }, 3000)
+                }, 10000)
             }
         },
         getVideoData() {
