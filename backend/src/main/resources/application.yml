@@ -5,7 +5,6 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:projectinfo}
-#    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:video_db}
     username: ${MYSQL_USER:root}
     password: ${MYSQL_PASSWORD:Jc230032}
 

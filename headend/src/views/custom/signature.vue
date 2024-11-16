@@ -206,7 +206,7 @@ export default {
             message: null,
             username: '',
             // 测试时间暂时设置为1
-            times: 1,
+            times: 120,
         }
     },
     mounted() {

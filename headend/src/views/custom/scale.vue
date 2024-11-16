@@ -128,12 +128,52 @@ export default {
       if (this.currentPage < this.totalPages - 1) this.currentPage++
     },
     submitForm() {
-      // 测试部分代码，可删，随机生成了60个回答
-      if (this.testFlag == true) {
-        // 下一行关键测试代码！著时候将不会随机产生60个问答
-        this.answers = this.generateRandomArray(60, 1, 5)
-        // 判断选项是否为空
-        console.log(this.answers)
+    //   // 测试部分代码，可删，随机生成了60个回答
+    //   if (this.testFlag == true) {
+    //     // 下一行关键测试代码！著时候将不会随机产生60个问答
+    //     // this.answers = this.generateRandomArray(60, 1, 5)
+    //     // 判断选项是否为空
+    //     console.log(this.answers)
+    //     const csv = this.questions
+    //       .map((question, index) => {
+    //         return `${index + 1}, ${question.text},${this.answers[index]}`
+    //       })
+    //       .join('\n')
+    //     const file = new File([csv], 'answer.csv', { type: 'text/mp4' })
+    //     this.nextPage()
+    //     // 临时测试下载文件到本地
+    //     const url = URL.createObjectURL(file)
+    //     const a = document.createElement('a')
+    //     document.body.appendChild(a)
+    //     a.style.display = 'none'
+    //     a.href = url
+    //     // 设置下载文件名
+    //     a.download = 'localAnswer.csv'
+    //     // 下载文件
+    //     a.click()
+    //     // 释放内存
+    //     window.URL.revokeObjectURL(url)
+    //     // 信息处理
+    //     document.querySelector('#one').hidden = true
+
+    //     console.log(document.querySelector('#one'))
+    //     document.querySelector('#zero').style.display = 'block'
+    //     document.querySelector('#one').style.display = 'none'
+    //     document.querySelector('#two').style.display = 'none'
+    //     document.querySelector('#three').style.display = 'none'
+    //     document.querySelector('#four').style.display = 'block'
+    //     setTimeout(() => {
+    //       this.$emit('finish', file)
+    //     }, 3000)
+    //   }
+
+      // 原代码
+      if (
+        this.answers.length < this.questions.length ||
+        this.answers.includes(undefined)
+      ) {
+        this.$emit('empty')
+      } else {
         const csv = this.questions
           .map((question, index) => {
             return `${index + 1}, ${question.text},${this.answers[index]}`
@@ -165,46 +205,6 @@ export default {
         setTimeout(() => {
           this.$emit('finish', file)
         }, 3000)
-      }
-
-      // 原代码
-      if (
-        this.answers.length < this.questions.length ||
-        this.answers.includes(undefined)
-      ) {
-        this.$emit('empty')
-      } else {
-        const csv = this.questions
-          .map((question, index) => {
-            return `${index + 1}, ${question.text},${this.answers[index]}`
-          })
-          .join('\n')
-        const file = new File([csv], 'answer.csv', { type: 'text/csv' })
-
-        // 临时测试下载文件到本地
-        const url = URL.createObjectURL(file)
-        const a = document.createElement('a')
-        document.body.appendChild(a)
-        a.style.display = 'none'
-        a.href = url
-        // 设置下载文件名
-        a.download = 'localAnswer.csv'
-        // 下载文件
-        a.click()
-        // 释放内存
-        window.URL.revokeObjectURL(url)
-        // 信息处理
-        document.querySelector('#one').hidden = true
-
-        console.log(document.querySelector('#one'))
-        document.querySelector('#zero').style.display = 'block'
-        document.querySelector('#one').style.display = 'none'
-        document.querySelector('#two').style.display = 'none'
-        document.querySelector('#three').style.display = 'none'
-        document.querySelector('#four').style.display = 'block'
-        setTimeout(() => {
-          this.$emit('finish', file)
-        }, 180000)
       }
     },
     generateRandomArray(length, min, max) {

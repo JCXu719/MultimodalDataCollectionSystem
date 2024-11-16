@@ -43,14 +43,14 @@
             @click="detect"
             >摄像头权限检测</base-button
           >
-          <base-button
+          <!-- <base-button
             outline
             type="primary"
             style="margin-left: 60px; margin-top: 50px"
             id="detect"
             @click="nextstep"
             >NEXT</base-button
-          >
+          > -->
         </div>
         <modal :show.sync="showModal">
           <h6 slot="header" class="modal-title" id="modal-title-default">

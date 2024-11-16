@@ -15,7 +15,7 @@
       class="text-center mt-3 mb-3"
       id = "video"
     >
-      <source src="videos/Stimulus.mp4" type="video/mp4" />
+      <source src="../../../Stimulus.mp4" type="video/mp4" />
     </video >
     <div class="text-center mt-3 mb-3">
       <base-button

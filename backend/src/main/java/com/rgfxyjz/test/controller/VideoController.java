@@ -4,6 +4,7 @@ import com.rgfxyjz.test.cjo.Result;
 import com.rgfxyjz.test.pojo.VideoFile;
 import com.rgfxyjz.test.pojo.VideoFile;
 import com.rgfxyjz.test.service.VideoService;
+import com.rgfxyjz.test.utils.FFmpegUtils;
 import com.rgfxyjz.test.utils.FileUtils;
 import com.rgfxyjz.test.utils.JwtUtils;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import ws.schild.jave.info.MultimediaInfo;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/video")
@@ -77,6 +80,7 @@ public class VideoController {
 
             // 保存文件到服务器
             FileUtils.saveFile(video, path, fileName_video);
+
             FileUtils.saveFile(times, path, fileName_times);
 
             // 保存文件信息到数据库
@@ -101,6 +105,49 @@ public class VideoController {
             videoService.save(videoFile_times, path);
 
             return Result.success(path);
+        } catch (Exception e) {
+            return Result.error("上传失败: " + e.getMessage());
+        }
+    }
+
+    //上传测试视频
+    @PostMapping("/upload/test")
+
+    public Result videoUploadTest(@RequestParam("video") MultipartFile video,
+                                  @RequestHeader("token") String token) {
+        System.out.println(video);
+        System.out.println(token);
+
+        if (video.isEmpty() ) {
+            return Result.error("No file selected");
+        }
+
+        try {
+            // 存放路径
+            String path;
+            // 文件名
+            String fileName_video;
+            String fileName_times;
+            String fileName_answers;
+            // 文件类型
+            String fileType_video = FileUtils.getExtensionFromMimeType(video.getContentType());
+            // 文件大小
+            long fileSize_video = video.getSize();
+            // 上传时间
+            Timestamp uploadTime = Timestamp.valueOf(LocalDateTime.now());
+            path = fileUploadPath + "/TestVideos/" + JwtUtils.getStudentIdFromToken(token) + " " + JwtUtils.getFullNameFromToken(token);
+            fileName_video = FileUtils.removeFileExtension(video.getOriginalFilename()) + '_' + new SimpleDateFormat("yyyyMMdd_HHmmss").format(uploadTime) + fileType_video;
+
+            // 保存视频信息
+            FileUtils.saveFile(video, path, fileName_video);
+            FFmpegUtils.formatToMp4(path + "/" + fileName_video,path + "/" +"fixed" +fileName_video );
+
+            // 从视频文件中获取信息
+            Map<String,Object> videoInfo = FFmpegUtils.getVideoInfo(path + '/' + "fixed" +fileName_video );
+
+
+
+            return Result.success(videoInfo);
         } catch (Exception e) {
             return Result.error("上传失败: " + e.getMessage());
         }

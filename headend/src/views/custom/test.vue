@@ -102,7 +102,7 @@ export default {
             times_audio: 0,
             times_video: 0,
             formData_video: new FormData(),
-            isVideoSatisified: false,
+            isVideoSatisified: null,
             fps: null
         }
     },
@@ -264,6 +264,7 @@ export default {
                                     },
                                 })
                                 .then((response) => {
+                                    console.log(response)
                                     const { code, data } = response.data
                                     this.fps = data.frameRate
 
@@ -300,6 +301,10 @@ export default {
             // const video = new Video(URL.createObjectURL(this.videoBlob))
             // console.log(video)
             // video.play()
+            if (this.isVideoSatisified == null){
+                alert("稍等，测试视频正在上传分析中，稍后请重新点击“视频回放”按钮")
+                return;
+            }
             const player = document.getElementById('player')
             const url = URL.createObjectURL(this.videoBlob)
             player.removeAttribute('autoplay')
@@ -318,7 +323,7 @@ export default {
                     videoInfo.width +
                     '<br>' +
                     '持续时间:' +
-                    '10s' + '<br>' + 'fps:' + this.fps
+                    '10s' + '<br>' + 'fps符合要求'
             })
             this.times_video += 1
             if (this.times_audio && this.times_video && this.isVideoSatisified) {

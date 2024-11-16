@@ -1,8 +1,10 @@
 package com.rgfxyjz.test.utils;
 
+import com.rgfxyjz.test.service.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -15,15 +17,18 @@ public class JwtUtils {
     private static final long EXPIRATION_TIME_LONG = 7 * 24 * 3600 * 1000; // 有效期24小时
 
     // 生成JWT令牌
-    public static String genJwt(String username, Integer id,Integer role,Boolean RememberMe) {
+    public static String genJwt(String username, Integer id,Integer role,Boolean RememberMe,String fullname ,String sutdentId) {
         Long Time = EXPIRATION_TIME;
         if(RememberMe) {
             Time = EXPIRATION_TIME_LONG;
         }
+
         Map<String, Object> claims = new HashMap<>();
         claims.put("id", id);
         claims.put("username", username);
         claims.put("role",role);
+        claims.put("student_id",sutdentId);
+        claims.put("fullname",fullname);
         return Jwts.builder()
                 .setClaims(claims)
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY) // 签名算法

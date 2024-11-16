@@ -6,6 +6,7 @@
  **/
 package com.rgfxyjz.test.controller;
 
+import com.mzt.logapi.starter.annotation.LogRecord;
 import com.rgfxyjz.test.cjo.Result;
 import com.rgfxyjz.test.pojo.User;
 import com.rgfxyjz.test.service.UserService;
@@ -70,13 +71,16 @@ public class UserController {
 
     //登录
     @PostMapping("/login")
+    @LogRecord(
+            success = "{{#user.username}}登录,登录结果:{{#_ret}}",
+            type = "login", bizNo = "1")
     public Result login(@RequestBody User user,
                         @RequestParam Boolean RememberMe) {
         // 在这里获取的username，其实是userinfo（用户名/学号/手机号三选一）
         User user1 =  userService.login(user.getUsername(),user.getPassword());
         if(user1 !=null ){//自定义信息
             //使用JWT工具类，生成身份令牌
-            String token = JwtUtils.genJwt(user1.getUsername(),user1.getId(),user1.getRole(),RememberMe);
+            String token = JwtUtils.genJwt(user1.getUsername(),user1.getId(),user1.getRole(),RememberMe,user1.getFullname(),user1.getStudentId());
             Result result = Result.success(token);
             result.setMsg(user1.getRole().toString());
 
@@ -106,17 +110,9 @@ public class UserController {
 
     //用户数量
     @GetMapping("/num")
-    public Result num(@RequestHeader("token") String token) {
+    public Result num() {
         try{
-            if(JwtUtils.isTokenExpired(token)){
-                throw new RuntimeException("Token expired");
-            }
-            if(JwtUtils.getRoleFromToken(token) == 0){
-                return Result.success(userService.list().size());
-            }
-            else{
-                return Result.error("无权限");
-            }
+            return Result.success(userService.list().size());
         }catch (Exception e){
             return Result.error(e.getMessage());
         }

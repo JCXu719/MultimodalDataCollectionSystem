@@ -10,6 +10,7 @@ import com.rgfxyjz.test.pojo.VideoFile;
 import com.rgfxyjz.test.pojo.VideoFile;
 
 import java.util.List;
+import java.util.Map;
 
 public interface VideoService {
     List<VideoFile> list();
@@ -20,5 +21,5 @@ public interface VideoService {
     List<VideoFile> searchByVideoFilename(String videoFilename);
     VideoFile searchByVideoFileId(Integer Id);
     boolean isUserCollected(String username);
-
+    Map<String,Object> getVideoInfo(String url);
 }

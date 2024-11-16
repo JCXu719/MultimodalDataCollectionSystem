@@ -18,6 +18,7 @@ public class FileUtils {
         MIME_TYPE_TO_EXTENSION.put("application/pdf", ".pdf");
         MIME_TYPE_TO_EXTENSION.put("video/mp4", ".mp4");
         MIME_TYPE_TO_EXTENSION.put("text/csv", ".csv");
+        MIME_TYPE_TO_EXTENSION.put("video/webm", ".webm");
         // 添加更多 MIME 类型到扩展名的映射
     }
 

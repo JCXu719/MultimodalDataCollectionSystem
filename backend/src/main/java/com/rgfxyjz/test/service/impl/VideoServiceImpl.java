@@ -10,11 +10,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rgfxyjz.test.mapper.VideoMapper;
 import com.rgfxyjz.test.pojo.VideoFile;
 import com.rgfxyjz.test.service.VideoService;
+import com.rgfxyjz.test.utils.FFmpegUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class VideoServiceImpl implements VideoService {
@@ -79,5 +81,9 @@ public class VideoServiceImpl implements VideoService {
         // 执行查询计数
         Long count = videoMapper.selectCount(queryWrapper);
         return count > 0;
+    }
+    @Override
+    public Map<String, Object> getVideoInfo(String url){
+        return FFmpegUtils.getVideoInfo(url);
     }
 }
